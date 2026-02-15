@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Para Camila ❤️</title>
+    <style>
+        /* Reset total para iPhone */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body { 
+            background: #fff0f3; 
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh; 
+            overflow: hidden;
+        }
+
+        .carta {
+            background: white;
+            width: 88%;
+            max-width: 340px;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            z-index: 10;
+        }
+
+        .video-box {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 2px solid #ffb3c1;
+        }
+
+        .texto {
+            text-align: left;
+            font-size: 14px;
+            color: #444;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        .pregunta {
+            display: block;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            color: #ff4d6d;
+            margin-top: 10px;
+        }
+
+        .botones {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            min-height: 120px;
+            position: relative;
+        }
+
+        button {
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 12px 25px;
+            touch-action: manipulation;
+        }
+
+        #yesBtn {
+            background: #ff4d6d;
+            color: white;
+            z-index: 999;
+            transition: transform 0.1s ease;
+        }
+
+        #noBtn {
+            background: #adb5bd;
+            color: white;
+            z-index: 10;
+        }
+
+        /* Capa final */
+        #pantallaFinal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #ff4d6d;
+            color: white;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="contenido" class="carta">
+        <h2 style="color: #ff4d6d; margin-bottom: 10px;">Hey Camila! ❤️</h2>
+        
+        <div class="video-box">
+            <iframe id="player" width="100%" height="100%" 
+                src="https://www.youtube.com/embed/8bdK85wh5hQ?playsinline=1&enablejsapi=1" 
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="texto">
+            Hey Camila, I was give you heart, but you already stole it. 
+            So now you're officially stuck with me! 
+            That 'No' button is as impossible to catch as your beauty.
+            <span class="pregunta">Be my Valentine?</span>
+        </div>
+
+        <div class="botones">
+            <button id="yesBtn" onclick="aceptar()">¡SÍ! ✨</button>
+            <button id="noBtn" onclick="crecer()">NO 😌</button>
+        </div>
+    </div>
+
+    <div id="pantallaFinal">
+        <h1 style="font-size: 3.5rem;">💖 ¡SÍ! 💖</h1>
+        <p style="font-size: 1.5rem; margin-top: 10px;">¡Te amo, Camila! 🔥</p>
+    </div>
+
+    <script>
+        // Lógica de crecimiento simplificada para que no se trabe el procesador del iPhone
+        let escala = 1;
+
+        function crecer() {
+            const btnSi = document.getElementById('yesBtn');
+            escala += 1.3;
+            
+            // Usamos transformaciones CSS puras (más rápidas en iPhone)
+            btnSi.style.transform = "scale(" + escala + ")";
+            btnSi.style.position = "fixed";
+            btnSi.style.top = "50%";
+            btnSi.style.left = "50%";
+            btnSi.style.translate = "-50% -50%";
+            btnSi.style.zIndex = "5000";
+        }
+
+        function aceptar() {
+            document.getElementById('contenido').style.display = 'none';
+            document.getElementById('pantallaFinal').style.display = 'flex';
+        }
+
+        // Contador de visitas removido para evitar bloqueos de Safari/WhatsApp
+    </script>
+</body>
+</html>
